@@ -1,14 +1,8 @@
-// 카드합
-// 현금합
-// verticallllllllllllllllllllllllllllllllll
-// 카테고리이ㅣㅣㅣㅣ별로 ㅅ합계ㅒ 도넛파이ㅣㅣㅣ
-//아무거나ㅏ
 import React from 'react';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 function ReportChart({ datas, sort }) {
 
-    //데이터 분류 0카드 1현금
     const dataSet = function () {
         const arrCard = new Array(sort.length).fill(0);
         const arrCash = new Array(sort.length).fill(0);

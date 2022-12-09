@@ -1,23 +1,6 @@
-// 라우터에 컴포넌트
-// api추가
-// 데이터받고
-// search옵션 
-
 import { useEffect, useRef, useState } from "react";
 import ReportChart from "./reportChart";
 import ReportSChart from "./reportSChart";
-
-
-
-/*
-
-
-            <div className="form-check form-switch float-end">
-                <input className="form-check-input" onClick={() => setSearchOpt(!searchOpt)} type="checkbox" role="switch" id="flexSwitchCheckChecked" />
-                <label className="form-check-label" htmlFor="flexSwitchCheckChecked"></label>
-                <br />
-            </div>
-*/
 
 function Report({ historyApi, setLoading }) {
     const [range, setRange] = useState({});
@@ -31,22 +14,16 @@ function Report({ historyApi, setLoading }) {
     ];
     const handleSortChange = evt => {
         let newOne = [];
-        // console.log(evt.target.value)
         if(sort.includes(evt.target.value)){
             sort.forEach(e => {
                 if(e!==evt.target.value){
                     newOne.push(e)}        })
         setSort(newOne)
-
         }else{
             newOne=[...sort,evt.target.value]
         setSort(newOne)
-
         }
-        console.log(newOne+"newONe")
-        console.log(sort+"handle")
     }
-
     const sorted = sortList.map(e => {
         return (
             <div className="form-check" key={e + 1} >
@@ -55,18 +32,14 @@ function Report({ historyApi, setLoading }) {
             </div>
         )
     })
-
     const handleChange = (evt) => {
         setRange({ ...range, [evt.target.name]: evt.target.value });
     }
-
-
     useEffect(() => {
         endRef.current.value = new Date().toISOString().slice(0, 10);
         beginRef.current.value = new Date(Date.now() - 1000 * 60 * 60 * 24 * 30).toISOString().slice(0, 10);
         setRange({ begin: beginRef.current.value, end: endRef.current.value });
     }, []);
-
     useEffect(() => {
         setLoading(true)
         if (!(range.begin && range.end)) {
@@ -86,9 +59,6 @@ function Report({ historyApi, setLoading }) {
     useEffect(() => {
         setSort(sortList)
     }, [])
-
-    // console.log(sort)
-
     return (<div>
         <div className="input-group mb-3">
             <span className="input-group-text">검색기간</span>
@@ -97,17 +67,14 @@ function Report({ historyApi, setLoading }) {
             <span className="input-group-text"> ~ </span>
             <input type="date" className="form-control" name="end"
                 onChange={handleChange} ref={endRef} />
-
         </div>
         <div className="form-floating float-end d-flex" onChange={handleSortChange}>
             {sorted}
             <hr />
         </div>
-
         <div>
         <ReportChart datas={datas} sort={sortList}/>
         <ReportSChart datas={datas} sort={sortList} />
-
         </div>
     </div>);
 }

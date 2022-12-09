@@ -14,7 +14,6 @@ function Register({ accountApi }) {
     const [show, setShow] = useState(false);
 
     const handleSubmit = async evt => {
-        //action="http://127.0.0.1:8080/api/account/register" method="post"
         evt.preventDefault();
         const em = email.current.value;
         const pw = password.current.value;

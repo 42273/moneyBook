@@ -9,7 +9,6 @@ function Write({ historyApi, handleClose, handleRefresh }) {
 
     const handleSetPay = evt=>{
         setPaySel(evt.target.id)
-        // console.log(evt.target.id)
     }
     
     const handleSubmit = async (evt) => {
@@ -21,7 +20,6 @@ function Write({ historyApi, handleClose, handleRefresh }) {
         data.token = localStorage.getItem("token");
         data["payby"] = paySel;
         console.log(data)
-        // console.log( new Date().toJSON().slice(0,10))
         const result = await historyApi.write(data)
         console.log(result)
         if (result.result) {
@@ -55,20 +53,6 @@ const sortList = [
                     </select>
                     <label htmlFor="pwd">분류</label>
                 </div>
-
-
-
-                {/* 
-                <div className="form-floating mt-3 mb-3">
-                    <input type="number" className="form-control" name="cash" id="cash" ref={e => input.current[3] = e} />
-                    <label htmlFor="cash">현금</label>
-                </div>                
-                
-                <div className="form-floating mt-3 mb-3">
-                    <input type="number" className="form-control" name="card" id="card" ref={e => input.current[4] = e} />
-                    <label htmlFor="card">카드</label>
-                </div> */}
-
                 <div className="form-check">
                     <input className="form-check-input" type="radio" name="payBy" id="cash"  onClick={handleSetPay}ref={e => input.current[5] = e}/>
                     <label className="form-check-label" htmlFor="cash">
@@ -81,24 +65,18 @@ const sortList = [
                         카드지불
                     </label>
                 </div>
-
-
                 <div className="form-floating mt-3 mb-3">
                     <input type="number" className="form-control" name="cost" id="cost" ref={e => input.current[3] = e} />
                     <label htmlFor="cost">금액</label>
                 </div>
-
                 <div className="form-floating mt-3 mb-3">
                     <input type="text" className="form-control" name="remark" id="remark" ref={e => input.current[4] = e} />
                     <label htmlFor="remark">비고</label>
                 </div>
-
                 <div className="d-grid">
                     <button type="submit" className="btn btn-primary btn-block">Submit</button>
                 </div>
-
             </form>
-
         </>
     );
 

@@ -13,11 +13,6 @@ function History({ historyApi,setLoading }) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [items, setItems] = useState([]);
-
-    // const [searchOpt, setSearchOpt] = useState(false)
-
-    // console.log(historyApi.history("2022-08"))
-
     const monthRef = useRef();
     useEffect(() => {
         const month = new Date().toISOString().slice(0, 7);
@@ -54,10 +49,6 @@ function History({ historyApi,setLoading }) {
         return [arrCard, arrCash]
     }();
 
-    console.log(dataSet)
-
-    //원래위치
-
     const handleRefresh = async () => {
         const response = await historyApi.history(monthRef.current.value, localStorage.getItem("token"));
         if (response.result) {
@@ -81,8 +72,6 @@ function History({ historyApi,setLoading }) {
             }
         }
     }
-
-
 
     const handleEdit = async evt => {
         evt.preventDefault();

@@ -6,8 +6,6 @@ import {Bar} from "react-chartjs-2"
 
 function HistoryBar({datas}) {
 
-
-
     const [visible, setVisible] = useState(true);
     ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
     const option = {
@@ -28,13 +26,11 @@ function HistoryBar({datas}) {
         labels: ["식비","주거/통신","생활용품","의복/미용","건강/문화","교통/차량","용돈/기타","미분류"],
         datasets: [{
             label: "카드",
-            // data: [420000, 20000, 130000, 110000, 70000, 12000, 500000],
             data:datas[0],
             backgroundColor : "rgb(255,99,132)"
         },
         {
             label: "현금",
-            // data: [10000, 100000, 30000, 10000, 75000, 2000, 200000],
             data:datas[1],
             backgroundColor : "rgb(75,152,255)"
 

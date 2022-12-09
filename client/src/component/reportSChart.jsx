@@ -1,14 +1,7 @@
-// 카드합
-// 현금합
-// verticallllllllllllllllllllllllllllllllll
-// 카테고리이ㅣㅣㅣㅣ별로 ㅅ합계ㅒ 도넛파이ㅣㅣㅣ
-//아무거나ㅏ
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 function ReportSChart({ datas, sort }) {
-
-    //데이터 분류 0카드 1현금
     const dataSet = function () {
         const arrCard = new Array(sort.length).fill(0);
         const arrCash = new Array(sort.length).fill(0);
@@ -27,7 +20,6 @@ function ReportSChart({ datas, sort }) {
     ChartJS.register(ArcElement, Tooltip, Legend);
 let cardSum = 0
 let cashSum = 0
-// console.log(datas)
 dataSet[0].forEach(e=>cardSum+=e)
 dataSet[1].forEach(e=>cashSum+=e)
 
@@ -52,12 +44,7 @@ const data = {
         ],
     };
 
-
         return <Doughnut data={data} height={100}/>;
-
-
-
-
 }
 
 export default ReportSChart;
